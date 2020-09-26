@@ -1,0 +1,58 @@
+{
+	"objects": [
+		{
+			"tag": "greeting",
+			"patterns": [
+				"Hi",
+				"How are you",
+				"Is anyone there?",
+				"Hello",
+				"Good day",
+				"Whats up"
+			],
+			"responses": "Hi there, how can I help?",
+			"context_set": ""
+		},
+		{
+			"tag": "goodbye",
+			"patterns": [
+				"cya",
+				"See you later",
+				"Goodbye",
+				"I am Leaving",
+				"Have a Good day"
+			],
+			"responses": "Goodbye! You made the right choice by hiring this candidate!!",
+			"context_set": ""
+		},
+		{
+			"tag": "age",
+			"patterns": ["how old", "what is your age", "how old are you", "age?"],
+			"responses": "Too personal. How can i help you?",
+			"context_set": ""
+		},
+		{
+			"tag": "name",
+			"patterns": [
+				"what is your name",
+				"what should I call you",
+				"whats your name?"
+			],
+			"responses": "My name is Gurvesh Sidhu. You can call me Garry",
+			"context_set": ""
+		},
+
+		{
+			"tag": "resume",
+			"patterns": ["when are i find your resume", "link to resume", "resume"],
+			"responses": "You can find the resume in top right section of the website",
+			"context_set": ""
+		},
+		{
+			"tag": "github",
+			"patterns": ["when are i find your github", "link to github", "github"],
+			"responses": "Here is the link to my github https://www.github.com/sidhugurvesh",
+			"context_set": ""
+		}
+	]
+}
