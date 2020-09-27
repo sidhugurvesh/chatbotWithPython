@@ -90,7 +90,6 @@ def chat():
             inp = input("You: ")
         except EOFError:
             print ("EOFError")
-            break
         if inp.lower() == "quit":
             break
 
