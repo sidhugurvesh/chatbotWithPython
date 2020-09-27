@@ -3,6 +3,7 @@ import tensorflow as tensor
 import json
 import numpy as np
 import nltk
+nltk.download('punkt')
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
 
