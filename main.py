@@ -86,9 +86,15 @@ def chat():
     print("Warning!! I am still under development.")
     print("Example question: type experience in the chat")
     while True:
-        inp = input("You: ")
+        try:
+            inp = input("You: ")
+        except EOFError:
+            print ("EOFError")
+            break
         if inp.lower() == "quit":
             break
+
+    
 
         result = model.predict([bag_of_words(inp, words)])
         result_index = np.argmax(result)
