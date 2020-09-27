@@ -1,2 +1,2 @@
-model_checkpoint_path: "C:\\Users\\Gurvesh Sidhu\\Desktop\\json file\\model.tf"
-all_model_checkpoint_paths: "C:\\Users\\Gurvesh Sidhu\\Desktop\\json file\\model.tf"
+model_checkpoint_path: "C:\\Users\\Gurvesh Sidhu\\Desktop\\chatbot\\model.tf"
+all_model_checkpoint_paths: "C:\\Users\\Gurvesh Sidhu\\Desktop\\chatbot\\model.tf"
