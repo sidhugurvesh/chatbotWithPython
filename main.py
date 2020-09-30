@@ -1,11 +1,16 @@
+from flask import Flask, render_template, request
+from nltk.stem.lancaster import LancasterStemmer
 import tflearn as tf
 import tensorflow as tensor
 import json
 import numpy as np
 import nltk
 nltk.download('punkt')
-from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
+
+# imports
+app = Flask(__name__)
+
 
 with open("qa.json") as file:
     data = json.load(file)
@@ -80,34 +85,39 @@ def bag_of_words(s, words):
     return np.array(bag)
 
 
-def chat():
-    print("Welcome. If you are a recruiter, hiring Manager/Team member, you made the right choice!!")
-    print("You can easily conduct a virtual interview. I am going to try my best to answer the questions accordingly")
-    print("Warning!! I am still under development.")
-    print("Example question: type experience in the chat")
-    while True:
-        try:
-            inp = input("You: ")
-        except EOFError:
-            print ("EOFError")
-            # if inp.lower() == "quit":
-            # break
-
-    
-
-        result = model.predict([bag_of_words(inp, words)])
-        result_index = np.argmax(result)
-        tag = classes[result_index]
-
-        if result[0][result_index] > 0.60:
-            for i in data["objects"]:
-                if i['tag'] == tag:
-                    responses = i['responses']
-                    print(responses)
-        else:
-            print("I am still under development. Try keywords like resume, github etc")
-            print(result)
-            print(result[0][result_index])
+app.app_context().push()
 
 
-chat()
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/get")
+# function for the bot response
+def get_bot_response():
+    userText = request.args.get('msg')
+    # print("Welcome. If you are a recruiter, hiring Manager/Team member, you made the right choice!!")
+    # print("You can easily conduct a virtual interview. I am going to try my best to answer the questions accordingly")
+    # print("Warning!! I am still under development.")
+    # print("Example question: type experience in the chat")
+
+    result = model.predict([bag_of_words(userText, words)])
+    result_index = np.argmax(result)
+    tag = classes[result_index]
+    responses = 0
+    if result[0][result_index] > 0.60:
+        for i in data["objects"]:
+            if i['tag'] == tag:
+                responses = i['responses']
+
+    else:
+        responses = "I am still under development. Try keywords like resume, github etc"
+        # print(result)
+        # print(result[0][result_index])
+
+    return responses
+
+
+if __name__ == "__main__":
+    app.run()
