@@ -11,7 +11,6 @@ stemmer = LancasterStemmer()
 # imports
 app = Flask(__name__)
 
-
 with open("qa.json") as file:
     data = json.load(file)
 
@@ -117,7 +116,3 @@ def get_bot_response():
         # print(result[0][result_index])
 
     return responses
-
-
-if __name__ == "__main__":
-    app.run()
